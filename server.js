@@ -22,6 +22,8 @@ const blogs = require('./routes/blogs');
 // Init App
 const app = express();
 
+
+
 // View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exphbs({defaultLayout:'layout'}));
