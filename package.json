@@ -22,8 +22,7 @@
     "mongoose": "*",
     "passport": "*",
     "passport-http": "*",
-    "passport-local": "*",
-    "unirest": "^0.5.1"
+    "passport-local": "*"
   },
   "devDependencies": {}
 }
