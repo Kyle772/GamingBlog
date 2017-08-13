@@ -1,0 +1,29 @@
+{
+  "name": "Blog",
+  "version": "1.0.0",
+  "description": "Blog",
+  "main": "server.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "connect-flash": "*",
+    "cookie-parser": "^1.4.1",
+    "express": "*",
+    "express-handlebars": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "igdb-api-node": "^3.0.1",
+    "jsdom": "^11.1.0",
+    "mongodb": "*",
+    "mongojs": "^2.4.1",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*",
+    "unirest": "^0.5.1"
+  },
+  "devDependencies": {}
+}
