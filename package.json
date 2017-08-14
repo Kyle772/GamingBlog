@@ -17,6 +17,7 @@
     "express-validator": "*",
     "igdb-api-node": "^3.0.1",
     "jsdom": "^11.1.0",
+    "mongod": "^2.0.0",
     "mongodb": "*",
     "mongojs": "^2.4.1",
     "mongoose": "*",

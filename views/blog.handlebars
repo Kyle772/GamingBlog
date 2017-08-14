@@ -7,10 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="gaming blog" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<script src="/index/js/test.js"></script>
 <link href="/index/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="/index/css/style.css" rel='stylesheet' type='text/css' />
 <script src="/index/js/jquery.min.js"></script>
+<script src="/index/js/test.js"></script>
 <!-- start-smoth-scrolling -->
 <script type="text/javascript" src="/index/js/move-top.js"></script>
 <script type="text/javascript" src="/index/js/easing.js"></script>
@@ -92,16 +92,22 @@
           <div class="about-one">
           </div>
           <div class="about-two">
-            <img src= {{url}} />
+            <img src={{url}} />
             
-            <p id="title" contenteditable="true"> {{title}} </p>
-            <h1 class ="submitblog" name="deletepost" id="deletepost">
-        <a href="/blog">
-        <span class="label label-default">Delete Post</span>
-        </a>
-        </h1>
+            <p class="title" contenteditable="true"> {{title}} </p>
+            <h3 class="submitblog deletepost" name="deletepost" data-id="{{ _id }}">
+            <a href="/blog">
+            <span class="label label-default">Delete Post</span>
+            </a>
+            </h3>
+              
+            <h3 class="submitblog updateblog hidden" name="updateblog" data-id="{{ _id }}">
+            <a href="/blog">
+            <span class="label label-default">Update Changes</span>
+            </a>
+            </h3>
 
-            <p id="review" contenteditable="true"> {{review}} </p>
+            <p class="review" contenteditable="true"> {{review}} </p>
             <ul>
               <li><p>Share : </p></li>
               <li><a href="#"><span class="fb"> </span></a></li>
@@ -116,15 +122,9 @@
     </div>
         {{/each}}
 
-        <h2 class ="submitblog" name="updateblog" id="updateblog">
-        <a href="/blog">
-        <span class="label label-default">Update Changes</span>
-        </a>
-        </h2>
 
 
-
-        <h2 class ="submitblog">
+        <h2 class="submitblog">
         <a href="/submitblog">
         <span class="label label-default">Submit New Blog</span>
         </a>

@@ -1,5 +1,5 @@
 var express = require('express');
-var router = express.Router();
+var router = express();
 const mongojs = require('mongojs');
 const db = mongojs('mongodb://lam:lam@ds161262.mlab.com:61262/gamingblog', ['blogs']);
 
@@ -53,7 +53,7 @@ router.post('/', function(req, res, next){
 
 
 // Delete Blog
-router.delete('/:id', function(req, res, next){
+router.delete('/blogs/:id', function(req, res, next){
     db.blogs.remove({_id: mongojs.ObjectId(req.params.id)}, function(err, blog){
         if(err){
             res.send(err);
@@ -65,20 +65,22 @@ router.delete('/:id', function(req, res, next){
 
 
 // Update Blog
-router.put('/:id', function(req, res, next){
-    var blog = req.body;
+router.put('/blogs/:id', function(req, res, next){
+    var review = req.params.data.review;
+    var url = req.params.data.url;
+    var title = req.params.data.title;
     var updBlog = {};
     
-    if(blog.title){
-        updBlog.title = blog.title;
+    if(title){
+        updBlog.title = title;
     }
     
-    if(blog.review){
-        updBlog.review = blog.review;
+    if(review){
+        updBlog.review = review;
     }
 
-    if(blog.url){
-        updBlog.url = blog.url;
+    if(url){
+        updBlog.url = url;
     }
     
     if(!updBlog){
@@ -87,7 +89,7 @@ router.put('/:id', function(req, res, next){
             "error":"Bad Data"
         });
     } else {
-        db.blogs.update({_id: mongojs.ObjectId(req.params.id)},updBlog, {}, function(err, blog){
+        db.blogs.update({_id: mongojs.ObjectId(req.params.id)}, updBlog, {}, function(err, blog){
         if(err){
             res.send(err);
         }
