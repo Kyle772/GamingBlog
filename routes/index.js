@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const mongojs = require('mongojs');
+const db = mongojs('mongodb://lam:lam@ds161262.mlab.com:61262/gamingblog', ['blogs']);
+
 
 // Get Homepage
 router.get('/', function(req, res){
@@ -8,8 +11,15 @@ router.get('/', function(req, res){
 
 // Get Blog
 router.get('/blog', function(req, res){
-	res.render('blog', {layout: false});
+	db.blogs.find(function(err, allBlogs){
+		if(err){
+			res.send(err);
+		}
+		res.render('blog', {blogs: allBlogs, layout: false});
+	});
 });
+
+
 
 // Get About
 router.get('/about', function(req, res){

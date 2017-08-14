@@ -40,7 +40,7 @@ router.post('/', function(req, res, next){
             "error": "Bad Data"
         });
     } else {
-        db.tasks.save(blog, function(err, blog){
+        db.blogs.save(blog, function(err, blog){
             if(err){
                 res.send(err);
             }
@@ -53,7 +53,7 @@ router.post('/', function(req, res, next){
 
 
 // Delete Blog
-router.delete('/blog/:id', function(req, res, next){
+router.delete('/:id', function(req, res, next){
     db.blogs.remove({_id: mongojs.ObjectId(req.params.id)}, function(err, blog){
         if(err){
             res.send(err);
@@ -63,17 +63,22 @@ router.delete('/blog/:id', function(req, res, next){
 });
 
 
+
 // Update Blog
-router.put('/blog/:id', function(req, res, next){
+router.put('/:id', function(req, res, next){
     var blog = req.body;
     var updBlog = {};
     
-    if(blog.isDone){
-        updBlog.isDone = blog.isDone;
-    }
-    
     if(blog.title){
         updBlog.title = blog.title;
+    }
+    
+    if(blog.review){
+        updBlog.review = blog.review;
+    }
+
+    if(blog.url){
+        updBlog.url = blog.url;
     }
     
     if(!updBlog){
@@ -90,5 +95,39 @@ router.put('/blog/:id', function(req, res, next){
     });
     }
 });
+
+
+
+
+
+
+// // Update Blog
+// router.put('/blog/:id', function (req, res, next) {
+//     return updateBlog(req.body);
+// });
+
+// router.put('/blog', function (req, res, next) {
+//     var blogs = req.body;
+
+//     for (var i = 0; i < blogs.count; i++) {
+//         updateBlog(blogs[i]);
+//     }
+// });
+
+// function updateBlog(blog) {
+//     var updBlog = {};
+//     if (blog.isDone) {
+//         updBlog.isDone = blog.isDone;
+//     }
+
+//     if (blog.title) {
+//         updBlog.title = blog.title;
+//     }
+//     db.blogs.update({
+//         _id: mongojs.ObjectId(req.params.id)
+//     }, updBlog, {}, function (err, blog) {});
+//     return updBlog;
+// }
+
 
 module.exports = router;
